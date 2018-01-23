@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+<script type='text/javascript' src='https://ajax.googleapis.com/ajax/libs/jquery/3.1.1/jquery.min.js'></script>
+<title>{{.PageTitle}}</title>
+</head>
+
+<script type='text/javascript'>
+ $(document).ready(function() {
+   $('input[name=animalselect]').change(function(){
+     $('form#animalform').submit();
+   });
+});
+$(document).ready(function() {
+   $('input[name=fruitselect]').change(function(){
+     $('form#fruitform').submit();
+   });
+});
+</script>
+<body>
+  {{with $1:=.PageRadioButtons}}
+  <p> Which do you prefer</p>
+
+    <form id="animalform" action="/selected" method="post">
+         {{range $1}}
+           <input type="radio" name={{.Name}} value={{.Value}} {{if .IsDisabled}} disabled=true {{end}} {{if .IsChecked}}checked{{end}}> {{.Text}}
+         {{end}}
+    </form>
+  {{end}}
+
+  {{with $2:=.PageRadioButtons2}}
+  <p> Which do you prefer</p>
+
+    <form id="fruitform" action="/fruitselected" method="post">
+         {{range $2}}
+           <input type="radio" name={{.Name}} value={{.Value}} {{if .IsDisabled}} disabled=true {{end}} {{if .IsChecked}}checked{{end}}> {{.Text}}
+         {{end}}
+    </form>
+  {{end}}
+
+  {{with $3:=.Answer}}
+    <p>Your answer is {{$3}}</p>
+  {{end}}
+
+</body>
+</html>
