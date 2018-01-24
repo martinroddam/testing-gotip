@@ -101,7 +101,7 @@ func UserSelected(w http.ResponseWriter, r *http.Request) {
 	if err != nil {                     // if there is an error
 		log.Print("template executing error: ", err) //log it
 	}
-	gotip.Verify("Test PathName")
+	gotip.Verify("User Logged In")
 }
 
 func UserFruitSelected(w http.ResponseWriter, r *http.Request) {
@@ -128,5 +128,5 @@ func UserFruitSelected(w http.ResponseWriter, r *http.Request) {
 	if err != nil {                     // if there is an error
 		log.Print("template executing error: ", err) //log it
 	}
-	gotip.Verify("Another Test PathName")
+	gotip.Verify("Order Submitted")
 }
